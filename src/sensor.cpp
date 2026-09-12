@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 #include <Adafruit_VL53L0X.h>
+#include <math.h>
 
 #define SENSOR_I2C_ADDR_BASE 0x30
 #define SENSOR_DEFAULT_ADDR 0x29
@@ -10,6 +11,8 @@
 
 static Adafruit_VL53L0X s_tof[SENSOR_COUNT];
 static bool s_sensor_ok[SENSOR_COUNT];
+static uint16_t s_last_valid_mm[SENSOR_COUNT] = {
+    SENSOR_MAX_RANGE_MM, SENSOR_MAX_RANGE_MM, SENSOR_MAX_RANGE_MM};
 static const uint8_t s_xshut_pin[SENSOR_COUNT] = {
     SENSOR_XSHUT_FRONT, SENSOR_XSHUT_RIGHT, SENSOR_XSHUT_LEFT};
 static const char *s_name[SENSOR_COUNT] = {"FRONT", "RIGHT", "LEFT"};
@@ -18,7 +21,7 @@ bool sensor_init(void)
 {
     pinMode(SENSOR_I2C_SDA, INPUT_PULLUP);
     pinMode(SENSOR_I2C_SCL, INPUT_PULLUP);
-    Wire.begin(SENSOR_I2C_SDA, SENSOR_I2C_SCL);
+    Wire.begin(SENSOR_I2C_SDA, SENSOR_I2C_SCL, 400000);
 
     for (int i = 0; i < SENSOR_COUNT; i++)
     {
@@ -38,7 +41,7 @@ bool sensor_init(void)
         Wire.beginTransmission(SENSOR_DEFAULT_ADDR);
         bool present = Wire.endTransmission() == 0;
         s_sensor_ok[i] = present && s_tof[i].begin(SENSOR_I2C_ADDR_BASE + i, false, &Wire,
-                                                     Adafruit_VL53L0X::VL53L0X_SENSE_HIGH_ACCURACY);
+                                                   Adafruit_VL53L0X::VL53L0X_SENSE_HIGH_ACCURACY);
         if (!s_sensor_ok[i])
         {
             Serial.printf("[SENSOR] %s init failed\n", s_name[i]);
@@ -48,6 +51,15 @@ bool sensor_init(void)
     return all_ok;
 }
 
+// Placeholder per-sensor calibration. Fill in a[]/b[] (or swap the formula
+// entirely) once the real fit is known.
+// static uint16_t calibrate(sensor_id_t id, uint16_t raw_mm)
+// {
+//     static const float a[SENSOR_COUNT] = {1.0f, 1.0f, 1.0f};
+//     static const float b[SENSOR_COUNT] = {0.0f, 0.0f, 0.0f};
+//     return (uint16_t)(a[id] * raw_mm + b[id]);
+// }
+
 static uint16_t read_one(sensor_id_t id, bool *in_range)
 {
     if (!s_sensor_ok[id])
@@ -56,11 +68,27 @@ static uint16_t read_one(sensor_id_t id, bool *in_range)
         return SENSOR_MAX_RANGE_MM;
     }
 
-    VL53L0X_RangingMeasurementData_t m;
+    VL53L0X_RangingMeasurementData_t m = {};
     s_tof[id].rangingTest(&m, false);
 
-    *in_range = (m.RangeStatus != 4);
-    return *in_range ? (uint16_t)m.RangeMilliMeter : SENSOR_MAX_RANGE_MM;
+    // Reject anything the sensor can't physically report, not just
+    // RangeStatus==4 - catches corrupted I2C reads that report a "valid"
+    // status but leave garbage (or an unfilled/zeroed struct) behind.
+    *in_range = (m.RangeStatus != 4) &&
+                (m.RangeMilliMeter > 0) &&
+                (m.RangeMilliMeter <= SENSOR_MAX_RANGE_MM);
+
+    if (!*in_range)
+    {
+        // Corrupted/invalid reading - discard it and hold the last good
+        // value instead of reporting a bogus distance.
+        return s_last_valid_mm[id];
+    }
+
+    uint16_t raw_mm = (uint16_t)m.RangeMilliMeter;
+    // raw_mm = calibrate(id, raw_mm);
+    s_last_valid_mm[id] = raw_mm;
+    return raw_mm;
 }
 
 bool sensor_read_all(sensor_reading_t *out)

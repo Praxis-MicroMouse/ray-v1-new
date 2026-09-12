@@ -11,7 +11,9 @@ void loop()
 {
     sensor_reading_t reading;
     sensor_read_all(&reading);
-    Serial.printf("front=%u right=%u left=%u\n",
-                  reading.front_mm, reading.right_mm, reading.left_mm);
-    delay(100);
+    Serial.printf("front=%u "
+                  "left=%u "
+                  "right=%u\n",
+                  reading.front_mm, reading.left_mm, reading.right_mm);
+    delay(50);
 }
