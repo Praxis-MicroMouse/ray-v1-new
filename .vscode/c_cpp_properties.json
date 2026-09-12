@@ -10,6 +10,8 @@
             "includePath": [
                 "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/include",
                 "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/src",
+                "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit_VL53L0X/src",
+                "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -206,6 +208,9 @@
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/variants/doitESP32devkitV1",
+                "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit BusIO",
+                "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit GFX Library",
+                "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit SSD1306",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
@@ -238,7 +243,6 @@
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 ""
             ],
             "browse": {
@@ -246,6 +250,8 @@
                 "path": [
                     "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/include",
                     "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/src",
+                    "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit_VL53L0X/src",
+                    "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -442,6 +448,9 @@
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/dio_qspi/include",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/variants/doitESP32devkitV1",
+                    "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit BusIO",
+                    "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit GFX Library",
+                    "/media/yasiru/New Volume/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit SSD1306",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
@@ -474,7 +483,6 @@
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                    "/home/yasiru/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     ""
                 ]
             },
