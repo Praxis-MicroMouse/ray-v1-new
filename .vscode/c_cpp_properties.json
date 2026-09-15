@@ -10,6 +10,7 @@
             "includePath": [
                 "D:/Praxis/MicroMouse/Code/new_programme/include",
                 "D:/Praxis/MicroMouse/Code/new_programme/src",
+                "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                 "D:/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit_VL53L0X/src",
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
@@ -214,7 +215,6 @@
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
-                "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/DNSServer/src",
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/EEPROM/src",
                 "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/ESP32/src",
@@ -250,6 +250,7 @@
                 "path": [
                     "D:/Praxis/MicroMouse/Code/new_programme/include",
                     "D:/Praxis/MicroMouse/Code/new_programme/src",
+                    "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                     "D:/Praxis/MicroMouse/Code/new_programme/.pio/libdeps/esp32doit-devkit-v1/Adafruit_VL53L0X/src",
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
@@ -454,7 +455,6 @@
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/BLE/src",
-                    "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src",
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/DNSServer/src",
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/EEPROM/src",
                     "C:/Users/YasiruRF/.platformio/packages/framework-arduinoespressif32/libraries/ESP32/src",
