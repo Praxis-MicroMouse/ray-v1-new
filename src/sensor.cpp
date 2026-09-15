@@ -51,14 +51,14 @@ bool sensor_init(void)
     return all_ok;
 }
 
-// Placeholder per-sensor calibration. Fill in a[]/b[] (or swap the formula
-// entirely) once the real fit is known.
-// static uint16_t calibrate(sensor_id_t id, uint16_t raw_mm)
-// {
-//     static const float a[SENSOR_COUNT] = {1.0f, 1.0f, 1.0f};
-//     static const float b[SENSOR_COUNT] = {0.0f, 0.0f, 0.0f};
-//     return (uint16_t)(a[id] * raw_mm + b[id]);
-// }
+// Linear calibration fit from actual vs measured distance
+static uint16_t calibrate(sensor_id_t id, uint16_t raw_mm)
+{ // front, right, left
+    static const float a[SENSOR_COUNT] = {0.9984f, 0.9690f, 0.9642f};
+    static const float b[SENSOR_COUNT] = {-12.81f, -13.60f, -10.56f};
+    float corrected = a[id] * raw_mm + b[id];
+    return (uint16_t)(corrected < 0 ? 0 : corrected);
+}
 
 static uint16_t read_one(sensor_id_t id, bool *in_range)
 {
@@ -86,7 +86,7 @@ static uint16_t read_one(sensor_id_t id, bool *in_range)
     }
 
     uint16_t raw_mm = (uint16_t)m.RangeMilliMeter;
-    // raw_mm = calibrate(id, raw_mm);
+    raw_mm = calibrate(id, raw_mm);
     s_last_valid_mm[id] = raw_mm;
     return raw_mm;
 }
